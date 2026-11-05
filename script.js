@@ -159,6 +159,7 @@ function checkWinner() {
 
         updateScore();
 
+        statusText.classList.add('is-win');
         statusText.textContent = `¡Jugador ${currentPlayer} ha ganado! 🎉`;
 
         return;
@@ -166,6 +167,7 @@ function checkWinner() {
 
     if (!board.includes('')) {
         gameActive = false;
+        statusText.classList.add('is-draw');
         statusText.textContent = '¡Empate! 🤝';
         return;
     }
@@ -196,10 +198,12 @@ function resetGame() {
 
     cells.forEach(cell => {
         cell.textContent = '';
+        cell.setAttribute('aria-label', `Casilla ${Number(cell.dataset.index) + 1}, vacía`);
         cell.disabled = false;
         cell.className = 'cell';
     });
 
+    statusText.classList.remove('is-win', 'is-draw');
     updateTurn();
 }
 
