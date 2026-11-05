@@ -24,21 +24,23 @@
         </div>
     </header>
 
-    <main class="page-shell" id="inicio">
-        <section class="game-section" id="juego" aria-labelledby="game-title">
-            <div class="page-heading">
-                <p class="eyebrow"><span class="availability-dot"></span> JUEGO DESTACADO</p>
-                <h1 id="game-title">3 en raya</h1>
-                <p class="subtitle">El clásico juego de estrategia</p>
+    <main class="container">
+        <h1>3 EN RAYA</h1>
+        <p class="subtitle">El clásico juego de estrategia</p>
+
+        <div class="scoreboard">
+            <div class="score active" id="scoreX">
+                <span class="symbol">X</span>
+                <span>Jugador</span>
+                <strong id="winsX">0</strong>
             </div>
 
-            <div class="game-card">
-                <div class="scoreboard" aria-label="Marcador">
-                    <div class="score active" id="scoreX">
-                        <span class="symbol">X</span>
-                        <span>Jugador 1</span>
-                        <strong id="winsX">0</strong>
-                    </div>
+            <div class="score" id="scoreO">
+                <span class="symbol">O</span>
+                <span>IA</span>
+                <strong id="winsO">0</strong>
+            </div>
+        </div>
 
                     <div class="score" id="scoreO">
                         <span class="symbol">O</span>
