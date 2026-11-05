@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101116">
+    <title>Cuatro en línea — Arcadia</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="index.html" aria-label="Arcadia, inicio">
+            <span class="brand-mark" aria-hidden="true">A</span>
+            <span>arcadia</span>
+        </a>
+        <nav class="main-nav" aria-label="Navegación principal">
+            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link active" href="index.html#juegos" aria-current="page">Juegos</a>
+            <a class="nav-link" href="index.html#juegos">Favoritos</a>
+        </nav>
+        <div class="profile" aria-label="Perfil de jugador">
+            <span class="profile-avatar" aria-hidden="true">J</span>
+            <span class="profile-name">Jugador</span>
+        </div>
+    </header>
+
+    <main class="page-shell">
+        <section class="four-section" aria-labelledby="four-title">
+            <div class="page-heading">
+                <p class="eyebrow"><span class="availability-dot" aria-hidden="true"></span> UN JUGADOR · CONTRA LA IA</p>
+                <h1 id="four-title">CUATRO EN LÍNEA</h1>
+                <p class="subtitle">Conecta cuatro fichas y gana la partida.</p>
+            </div>
+
+            <div class="four-card">
+                <div class="four-scoreboard" aria-label="Puntuación">
+                    <div class="four-score active" id="scoreOne">
+                        <span class="disc disc-one" aria-hidden="true"></span>
+                        <span>Tú</span>
+                        <strong id="winsOne">0</strong>
+                    </div>
+                    <div class="four-score" id="scoreTwo">
+                        <span class="disc disc-two" aria-hidden="true"></span>
+                        <span>IA</span>
+                        <strong id="winsTwo">0</strong>
+                    </div>
+                </div>
+
+                <div class="four-status" id="fourStatus" role="status" aria-live="polite">
+                    Tu turno
+                </div>
+
+                <p class="four-instructions" id="boardInstructions">Elige una columna para soltar tu ficha.</p>
+                <div class="column-controls" id="columnControls" role="group" aria-label="Elige una columna"></div>
+                <div class="four-board" id="fourBoard" role="grid" aria-label="Tablero de Cuatro en línea" aria-describedby="boardInstructions"></div>
+
+                <button class="reset" id="fourReset" type="button">
+                    <span aria-hidden="true">↻</span> Nueva partida
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <span>arcadia</span>
+        <span>Un espacio para jugar.</span>
+    </footer>
+
+    <script src="four-in-a-row.js"></script>
+</body>
+</html>
