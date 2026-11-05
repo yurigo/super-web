@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101116">
+    <title>2048 — Arcadia</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="index.html" aria-label="Arcadia, inicio">
+            <span class="brand-mark" aria-hidden="true">A</span>
+            <span>arcadia</span>
+        </a>
+        <nav class="main-nav" aria-label="Navegación principal">
+            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link active" href="index.html#juegos" aria-current="page">Juegos</a>
+            <a class="nav-link" href="index.html#juegos">Favoritos</a>
+        </nav>
+        <div class="profile" aria-label="Perfil de jugador">
+            <span class="profile-avatar" aria-hidden="true">J</span>
+            <span class="profile-name">Jugador</span>
+        </div>
+    </header>
+
+    <main class="page-shell">
+        <section class="twenty-section" aria-labelledby="twenty-title">
+            <div class="page-heading">
+                <p class="eyebrow"><span class="availability-dot" aria-hidden="true"></span> UN JUGADOR · LÓGICA</p>
+                <h1 id="twenty-title">2048</h1>
+                <p class="subtitle">Combina las fichas y alcanza el 2048.</p>
+            </div>
+
+            <div class="twenty-card">
+                <div class="twenty-scoreboard" aria-label="Puntuación">
+                    <div class="twenty-score">
+                        <span>PUNTUACIÓN</span>
+                        <strong id="score">0</strong>
+                    </div>
+                    <div class="twenty-score">
+                        <span>RÉCORD</span>
+                        <strong id="bestScore">0</strong>
+                    </div>
+                </div>
+
+                <div class="twenty-toolbar">
+                    <p class="twenty-status" id="gameStatus" role="status" aria-live="polite">¡Combina las fichas para llegar a 2048!</p>
+                    <button class="twenty-new-game" id="newGame" type="button">Nueva partida</button>
+                </div>
+
+                <div class="twenty-board" id="board" role="grid" aria-label="Tablero de 2048" aria-describedby="gameInstructions"></div>
+                <p class="twenty-instructions" id="gameInstructions">Usa las flechas del teclado o los botones para mover las fichas. En móvil, también puedes deslizar.</p>
+
+                <div class="twenty-controls" role="group" aria-label="Mover fichas">
+                    <button type="button" data-direction="up" aria-label="Mover arriba">↑</button>
+                    <div>
+                        <button type="button" data-direction="left" aria-label="Mover a la izquierda">←</button>
+                        <button type="button" data-direction="down" aria-label="Mover abajo">↓</button>
+                        <button type="button" data-direction="right" aria-label="Mover a la derecha">→</button>
+                    </div>
+                </div>
+
+                <div class="twenty-overlay" id="gameOverlay" hidden>
+                    <p class="twenty-overlay-title" id="overlayTitle"></p>
+                    <p id="overlayMessage"></p>
+                    <button class="reset" id="continueGame" type="button" hidden>Seguir jugando</button>
+                    <button class="reset" id="restartGame" type="button" hidden>Jugar de nuevo</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <span>arcadia</span>
+        <span>Un espacio para jugar.</span>
+    </footer>
+
+    <script src="2048.js"></script>
+</body>
+</html>

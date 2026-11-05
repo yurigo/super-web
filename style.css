@@ -892,6 +892,270 @@ h1 {
     margin-top: 18px;
 }
 
+.twenty-section {
+    width: min(100%, 520px);
+    margin: 0 auto;
+    text-align: center;
+}
+
+.twenty-card {
+    position: relative;
+    padding: 22px 24px 24px;
+    border: 1px solid var(--border-default);
+    border-radius: 18px;
+    background: var(--bg-secondary);
+    box-shadow: var(--shadow-soft);
+}
+
+.twenty-scoreboard {
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.twenty-score {
+    min-width: 90px;
+    padding: 9px 14px;
+    display: grid;
+    gap: 3px;
+    border: 1px solid var(--border-default);
+    border-radius: 10px;
+    background: var(--bg-tertiary);
+}
+
+.twenty-score span {
+    color: var(--text-muted);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+}
+
+.twenty-score strong {
+    color: var(--color-yellow);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+}
+
+.twenty-toolbar {
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.twenty-status {
+    color: var(--text-secondary);
+    font-size: 12px;
+    text-align: left;
+}
+
+.twenty-new-game {
+    min-height: 40px;
+    padding: 8px 12px;
+    border: 1px solid var(--border-default);
+    border-radius: 9px;
+    background: var(--bg-elevated);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.twenty-new-game:hover {
+    border-color: var(--color-cyan);
+    background: var(--bg-tertiary);
+}
+
+.twenty-board {
+    width: 100%;
+    aspect-ratio: 1;
+    padding: 9px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+    border: 1px solid var(--border-default);
+    border-radius: 14px;
+    background: var(--bg-elevated);
+    touch-action: none;
+}
+
+.twenty-tile {
+    min-width: 0;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 9px;
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(20px, 7vw, 36px);
+    font-weight: 700;
+    transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.twenty-tile[data-value="2"],
+.mini-twenty span:nth-child(1),
+.mini-twenty span:nth-child(9),
+.mini-twenty span:nth-child(14) {
+    background: rgb(0 194 203 / 24%);
+    color: var(--color-cyan);
+}
+
+.twenty-tile[data-value="4"],
+.mini-twenty span:nth-child(3),
+.mini-twenty span:nth-child(12),
+.mini-twenty span:nth-child(16) {
+    background: rgb(127 224 212 / 22%);
+    color: var(--color-mint);
+}
+
+.twenty-tile[data-value="8"],
+.mini-twenty span:nth-child(6) {
+    background: rgb(255 227 138 / 22%);
+    color: var(--color-yellow);
+}
+
+.twenty-tile[data-value="16"],
+.mini-twenty span:nth-child(11) {
+    background: rgb(255 154 118 / 22%);
+    color: var(--color-coral);
+}
+
+.twenty-tile[data-value="32"],
+.twenty-tile[data-value="64"] {
+    background: rgb(255 93 143 / 22%);
+    color: var(--color-pink);
+}
+
+.twenty-tile[data-value="128"],
+.twenty-tile[data-value="256"],
+.twenty-tile[data-value="512"],
+.twenty-tile[data-value="1024"],
+.twenty-tile[data-value="2048"] {
+    background: var(--color-yellow);
+    color: var(--bg-primary);
+    font-size: clamp(16px, 5vw, 30px);
+}
+
+.twenty-instructions {
+    margin-top: 12px;
+    color: var(--text-muted);
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.twenty-controls {
+    margin-top: 15px;
+    display: grid;
+    justify-items: center;
+    gap: 5px;
+}
+
+.twenty-controls > div {
+    display: flex;
+    gap: 5px;
+}
+
+.twenty-controls button {
+    width: 46px;
+    height: 42px;
+    border: 1px solid var(--border-default);
+    border-radius: 9px;
+    background: var(--bg-tertiary);
+    color: var(--color-cyan);
+    font-size: 20px;
+    cursor: pointer;
+    transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.twenty-controls button:hover {
+    border-color: var(--color-cyan);
+    background: var(--bg-elevated);
+}
+
+.twenty-controls button:active {
+    transform: scale(0.96);
+}
+
+.twenty-overlay {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    padding: 24px;
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    gap: 12px;
+    border-radius: 18px;
+    background: rgb(16 17 22 / 90%);
+    backdrop-filter: blur(4px);
+}
+
+.twenty-overlay-title {
+    color: var(--color-mint);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.twenty-overlay > p:not(.twenty-overlay-title) {
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.twenty-overlay .reset {
+    max-width: 240px;
+}
+
+.twenty-overlay[hidden],
+.twenty-overlay .reset[hidden] {
+    display: none;
+}
+
+.twenty-art {
+    background: radial-gradient(ellipse at center, rgb(255 227 138 / 10%), transparent 58%), var(--bg-tertiary);
+}
+
+.mini-twenty {
+    width: min(46%, 190px);
+    aspect-ratio: 1;
+    padding: 7px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    border: 1px solid var(--border-default);
+    border-radius: 12px;
+    background: var(--bg-secondary);
+    transform: rotate(-5deg);
+}
+
+.mini-twenty span {
+    display: grid;
+    place-items: center;
+    border-radius: 5px;
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.mini-twenty span:nth-child(6) {
+    background: rgb(255 227 138 / 22%);
+    color: var(--color-yellow);
+}
+
+.mini-twenty span:nth-child(11) {
+    background: rgb(255 154 118 / 22%);
+    color: var(--color-coral);
+}
+
 @media (max-width: 600px) {
     .site-header {
         height: 64px;
@@ -1016,6 +1280,19 @@ h1 {
 
     .four-card {
         padding: 16px 12px;
+    }
+
+    .twenty-card {
+        padding: 14px 12px 16px;
+    }
+
+    .twenty-board {
+        padding: 7px;
+        gap: 6px;
+    }
+
+    .twenty-tile {
+        border-radius: 7px;
     }
 
     .four-scoreboard {
