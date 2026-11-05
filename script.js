@@ -29,21 +29,108 @@ const winningCombinations = [
     [2, 4, 6]
 ];
 
+const HUMAN = 'X';
+const AI = 'O';
+const MOVE_ORDER = [4, 0, 2, 6, 8, 1, 3, 5, 7];
+let aiTimeout = null;
+
 cells.forEach(cell => {
     cell.addEventListener('click', () => {
         const index = Number(cell.dataset.index);
 
-        if (!gameActive || board[index] !== '') return;
+        if (!gameActive || currentPlayer !== HUMAN || board[index] !== '') return;
 
-        board[index] = currentPlayer;
+        makeMove(index);
 
-        cell.textContent = currentPlayer;
-        cell.classList.add(currentPlayer.toLowerCase());
-        cell.disabled = true;
-
-        checkWinner();
+        if (gameActive) {
+            aiTimeout = setTimeout(aiMove, 400);
+        }
     });
 });
+
+function makeMove(index) {
+    board[index] = currentPlayer;
+
+    const cell = cells[index];
+    cell.textContent = currentPlayer;
+    cell.classList.add(currentPlayer.toLowerCase());
+    cell.disabled = true;
+
+    checkWinner();
+}
+
+function aiMove() {
+    aiTimeout = null;
+    const move = getBestMove(board, AI, HUMAN);
+    if (move !== null) makeMove(move);
+}
+
+function getWinner(b) {
+    for (const [x, y, z] of winningCombinations) {
+        if (b[x] && b[x] === b[y] && b[x] === b[z]) return b[x];
+    }
+    return null;
+}
+
+function getAvailableMoves(b) {
+    return MOVE_ORDER.filter(i => b[i] === '');
+}
+
+// Minimax with alpha-beta pruning; scores favour quicker wins / slower losses.
+function minimax(b, depth, isMaximizing, ai, human, alpha, beta) {
+    const winner = getWinner(b);
+    if (winner === ai) return 10 - depth;
+    if (winner === human) return depth - 10;
+
+    const moves = getAvailableMoves(b);
+    if (moves.length === 0) return 0;
+
+    let best = isMaximizing ? -Infinity : Infinity;
+
+    for (const move of moves) {
+        b[move] = isMaximizing ? ai : human;
+        const score = minimax(b, depth + 1, !isMaximizing, ai, human, alpha, beta);
+        b[move] = '';
+
+        if (isMaximizing) {
+            best = Math.max(best, score);
+            alpha = Math.max(alpha, best);
+        } else {
+            best = Math.min(best, score);
+            beta = Math.min(beta, best);
+        }
+
+        if (beta <= alpha) break;
+    }
+
+    return best;
+}
+
+// Returns an optimal move (random among equally optimal ones) or null.
+function getBestMove(b, ai = AI, human = HUMAN) {
+    if (getWinner(b)) return null;
+
+    const moves = getAvailableMoves(b);
+    if (moves.length === 0) return null;
+
+    let bestScore = -Infinity;
+    let bestMoves = [];
+
+    for (const move of moves) {
+        b[move] = ai;
+        const score = minimax(b, 1, false, ai, human, -Infinity, Infinity);
+        b[move] = '';
+
+        if (score > bestScore) {
+            bestScore = score;
+            bestMoves = [move];
+        } else if (score === bestScore) {
+            bestMoves.push(move);
+        }
+    }
+
+    return bestMoves[Math.floor(Math.random() * bestMoves.length)];
+}
 
 function checkWinner() {
     let winningCombination = null;
@@ -101,6 +188,8 @@ function updateScore() {
 }
 
 function resetGame() {
+    clearTimeout(aiTimeout);
+    aiTimeout = null;
     board = Array(9).fill('');
     currentPlayer = 'X';
     gameActive = true;
