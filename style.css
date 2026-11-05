@@ -1,0 +1,157 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #10101c;
+    font-family: 'Outfit', sans-serif;
+    color: white;
+}
+
+.container {
+    width: 90%;
+    max-width: 420px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    background: linear-gradient(90deg, #8b5cf6, #22d3ee);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.subtitle {
+    color: #9292a8;
+    margin-top: 8px;
+    margin-bottom: 35px;
+}
+
+.scoreboard {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.score {
+    flex: 1;
+    padding: 15px;
+    border-radius: 15px;
+    background: #1b1b2c;
+    border: 2px solid transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: #9292a8;
+    transition: 0.3s;
+}
+
+.score.active {
+    border-color: #8b5cf6;
+    background: #25203c;
+    color: white;
+}
+
+.symbol {
+    font-size: 26px;
+    font-weight: 800;
+}
+
+#scoreX .symbol {
+    color: #a78bfa;
+}
+
+#scoreO .symbol {
+    color: #22d3ee;
+}
+
+.score strong {
+    font-size: 25px;
+    color: white;
+}
+
+.status {
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #c4b5fd;
+    font-weight: 600;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.cell {
+    aspect-ratio: 1;
+    border: none;
+    border-radius: 16px;
+    background: #1b1b2c;
+    color: white;
+    font-family: inherit;
+    font-size: 65px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.cell:hover:not(:disabled) {
+    background: #292940;
+    transform: scale(1.04);
+}
+
+.cell.x {
+    color: #a78bfa;
+}
+
+.cell.o {
+    color: #22d3ee;
+}
+
+.cell.winner {
+    background: #373052;
+    box-shadow: 0 0 20px #8b5cf655;
+}
+
+.reset {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #8b5cf6, #6366f1);
+    color: white;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.reset:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px #8b5cf644;
+}
+
+@media (max-width: 400px) {
+    h1 {
+        font-size: 34px;
+    }
+
+    .cell {
+        font-size: 50px;
+    }
+}

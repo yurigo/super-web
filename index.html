@@ -1,11 +1,53 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MI SUPER WEB</title>
+    <title>3 en Raya</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>hola!</h1>
+
+    <main class="container">
+        <h1>3 EN RAYA</h1>
+        <p class="subtitle">El clásico juego de estrategia</p>
+
+        <div class="scoreboard">
+            <div class="score active" id="scoreX">
+                <span class="symbol">X</span>
+                <span>Jugador 1</span>
+                <strong id="winsX">0</strong>
+            </div>
+
+            <div class="score" id="scoreO">
+                <span class="symbol">O</span>
+                <span>Jugador 2</span>
+                <strong id="winsO">0</strong>
+            </div>
+        </div>
+
+        <div class="status" id="status">
+            Turno del jugador X
+        </div>
+
+        <div class="board" id="board">
+            <button class="cell" data-index="0"></button>
+            <button class="cell" data-index="1"></button>
+            <button class="cell" data-index="2"></button>
+            <button class="cell" data-index="3"></button>
+            <button class="cell" data-index="4"></button>
+            <button class="cell" data-index="5"></button>
+            <button class="cell" data-index="6"></button>
+            <button class="cell" data-index="7"></button>
+            <button class="cell" data-index="8"></button>
+        </div>
+
+        <button class="reset" id="reset">
+            ↻ Nueva partida
+        </button>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
